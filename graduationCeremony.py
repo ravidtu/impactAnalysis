@@ -1,6 +1,8 @@
 import time
 
 def numberOfWaysToAttendClass(number):
+    if number <1:
+       return 0
     attendCeremony = dict()
     attendCeremony[0] = 1
     attendCeremony[1] = 1
