@@ -1,20 +1,24 @@
 import time
 
 def numberOfWaysToAttendClass(number):
-    if number <1:
-       return 0
-    attendCeremony = dict()
-    attendCeremony[0] = 1
-    attendCeremony[1] = 1
-    attendCeremony[2] = 3
-    attendCeremony[3] = 7
-    attendCeremony[4] = 13
-    attendCeremony[5] = 24  #series start from here
-    for count in range(6,number+1):
-        attendCeremony[count] = attendCeremony[count-1] + attendCeremony[count-2] + attendCeremony[count-3]
-
-    print(attendCeremony[number])
-    print(str(attendCeremony[number]-attendCeremony[number-1])+'/'+str(attendCeremony[number]))
+    if number <0:
+       print("invalid input.Please enter number positive number");exit();
+    #dictionary for storing absent values on ceremony day   
+    absentCeremony = dict()
+    absentCeremony[0] = 0
+    absentCeremony[1] = 1
+    absentCeremony[2] = 2
+    #below dictionary to store no of ways to attend class
+    waysToAttendClass  = dict()
+    waysToAttendClass[0] = 1
+    waysToAttendClass[1] = 2
+    waysToAttendClass[2] = 4
+    for count in range(3,number+1):
+        waysToAttendClass[count] = waysToAttendClass[count - 1] + waysToAttendClass[count - 2] + waysToAttendClass[count - 3]
+        absentCeremony[count] = absentCeremony[count - 1] + absentCeremony[count - 2] + absentCeremony[count - 3]
+        
+    print(waysToAttendClass[number])
+    print(str(absentCeremony[number])+'/'+str(waysToAttendClass[number]))
 	
 
 
